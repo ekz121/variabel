@@ -38,6 +38,7 @@
             align-items: center;
             gap: 15px;
             padding: 20px;
+            width: 100%;
         }
         .task-box {
             width: 90%;
@@ -55,18 +56,9 @@
             animation: neonPulse 2s infinite ease-in-out;
         }
         @keyframes neonPulse {
-            0% { 
-                border-color: rgba(0, 255, 255, 0.3);
-                box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            }
-            50% { 
-                border-color: rgba(0, 255, 255, 0.7);
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-            }
-            100% { 
-                border-color: rgba(0, 255, 255, 0.3);
-                box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            }
+            0% { border-color: rgba(0, 255, 255, 0.3); box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); }
+            50% { border-color: rgba(0, 255, 255, 0.7); box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+            100% { border-color: rgba(0, 255, 255, 0.3); box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); }
         }
         .task-box::before {
             content: '';
@@ -84,16 +76,8 @@
             animation: rippleEffect 1s ease-out;
         }
         @keyframes rippleEffect {
-            0% {
-                width: 0;
-                height: 0;
-                opacity: 0.5;
-            }
-            100% {
-                width: 200%;
-                height: 200%;
-                opacity: 0;
-            }
+            0% { width: 0; height: 0; opacity: 0.5; }
+            100% { width: 200%; height: 200%; opacity: 0; }
         }
         .task-box:hover {
             background: rgba(255, 255, 255, 0.2);
@@ -126,6 +110,7 @@
             display: block;
             margin: 10px auto;
             border-radius: 5px;
+            object-fit: contain;
         }
         .task-title {
             font-size: 1.5em;
@@ -139,6 +124,7 @@
             padding: 15px;
             border-radius: 10px;
             overflow-x: auto;
+            width: 100%;
         }
         pre {
             margin: 0;
@@ -198,6 +184,7 @@
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
+            width: 100%;
         }
         .task-box.expanded .task-content {
             display: block;
@@ -299,17 +286,96 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        /* Media Query untuk Presisi di Mobile */
         @media (max-width: 768px) {
-            .task-box, .quiz-container {
+            .header {
                 width: 95%;
+                padding: 20px;
+            }
+            .container {
+                padding: 10px;
+                gap: 10px;
+            }
+            .task-box {
+                width: 95%;
+                padding: 15px;
             }
             .task-box.expanded {
                 width: 95%;
-                max-height: 70vh;
+                max-height: 85vh;
+                padding: 20px;
             }
-            .copy-btn, .view-btn, .download-btn {
+            .task-title {
+                font-size: 1.3em;
+            }
+            .code-box {
+                padding: 10px;
+            }
+            .copy-btn {
                 padding: 6px 10px;
                 font-size: 0.8em;
+            }
+            .view-btn {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+            .download-btn {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+            .quiz-container {
+                width: 95%;
+                padding: 20px;
+                margin: 20px auto;
+            }
+            .quiz-title {
+                font-size: 1.8em;
+            }
+            .quiz-link {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                width: 98%;
+                padding: 15px;
+            }
+            .container {
+                padding: 5px;
+                gap: 8px;
+            }
+            .task-box {
+                width: 98%;
+                padding: 10px;
+            }
+            .task-box.expanded {
+                width: 98%;
+                max-height: 90vh;
+                padding: 15px;
+            }
+            .task-title {
+                font-size: 1.2em;
+            }
+            .code-box {
+                padding: 8px;
+            }
+            .copy-btn {
+                padding: 5px 8px;
+                font-size: 0.7em;
+            }
+            .view-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            .download-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+            .quiz-container {
+                width: 98%;
+                padding: 15px;
+                margin: 15px auto;
             }
             .quiz-title {
                 font-size: 1.5em;
@@ -336,15 +402,13 @@
     </div>
     <div class="container">
         <div class="task-box">
-            <h2 class="task-title">Coding 1 Membuat Program Harga Produk</h2>
+            <h2 class="task-title">Coding 1 </h2>
             <button class="view-btn">Lihat</button>
             <div class="task-content">
                 <h3>Coding Program</h3>
                 <div class="code-box">
-                    <pre><code>#include &lt;iostream&gt;
-
-#include  &lt;string&gt;
-
+                    <pre><code>#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -374,8 +438,8 @@ int main() {
     cout << "Tinggi Badan: " << tinggi << " meter" << endl;
     cout << "BMI: " << indeksBMI << endl;
 
-    return 0;</code></pre>
-                            
+    return 0;
+}</code></pre>
                     <button class="copy-btn"></button>
                 </div>
             </div>
@@ -415,10 +479,8 @@ int main() {
             <div class="task-content">
                 <h3>Coding Program</h3>
                 <div class="code-box">
-                    <pre><code>#include &lt;iostream&gt;
-                   
-                        
-#include &lt;string&gt;
+                    <pre><code>#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -451,8 +513,6 @@ int main() {
 
     return 0;
 }
-                            
-                        
                         </code></pre>
                     <button class="copy-btn"></button>
                 </div>
@@ -483,7 +543,7 @@ int main() {
             </div>
         </div>
         <div class="task-box">
-            <h2 class="task-title">Analisa Mengapa Perlu Mempelajari Pengantar Pemrograman</h2>
+            <h2 class="task-title">Analisa Mengapa Perlu Mempelajari variabel</h2>
             <button class="view-btn">Lihat</button>
             <div class="task-content">
                 <div class="code-box">
@@ -510,9 +570,6 @@ int main() {
                             <p style="color: #e0e0e0; line-height: 1.6;">Dari Python, Java, hingga C++, konsep variabel selalu ada. Paham variabel berarti kamu bisa lebih cepat belajar bahasa baru!</p>
                         </li>
                     </ul>
-                </div>
-            </div>
-            
                     <button class="copy-btn"></button>
                 </div>
             </div>
