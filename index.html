@@ -25,8 +25,7 @@
             z-index: -1;
         }
         .header {
-            width: 80%;
-            max-width: 1000px;
+            width: clamp(80%, 80vw, 1000px);
             margin: 20px auto;
             padding: 30px;
             background: rgba(255, 255, 255, 0.1);
@@ -41,8 +40,7 @@
             width: 100%;
         }
         .task-box {
-            width: 90%;
-            max-width: 900px;
+            width: clamp(80%, 90vw, 900px);
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
@@ -91,8 +89,7 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(1);
             max-height: 80vh;
-            width: 90%;
-            max-width: 800px;
+            width: clamp(80%, 90vw, 800px);
             overflow-y: auto;
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
@@ -204,8 +201,7 @@
             display: block;
         }
         .quiz-container {
-            width: 90%;
-            max-width: 900px;
+            width: clamp(80%, 90vw, 900px);
             background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(0, 212, 255, 0.2));
             padding: 30px;
             border-radius: 15px;
@@ -286,10 +282,38 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Media Query untuk Presisi di Mobile */
-        @media (max-width: 768px) {
+        /* Media Queries untuk Dinamis di Desktop dan Mobile */
+        @media (max-width: 1200px) {
+            .header, .task-box, .quiz-container {
+                width: clamp(90%, 95vw, 900px);
+            }
+        }
+
+        @media (max-width: 1024px) { 
+            .task-title {
+                font-size: 1.4em;
+            }
+
+            .header, .task-box, .quiz-container {
+                width: clamp(85%, 90vw, 900px);
+            }
+            .task-box.expanded {
+                width: clamp(85%, 95vw, 800px);
+                max-height: 85vh;
+            }
+            .task-title {
+                font-size: 1.4em;
+            }
+            .quiz-title {
+                font-size: 1.8em;
+            }
+        }
+        @media (max-width: 768px) { 
+            .task-title {
+                font-size: 1.3em;
+            }
+
             .header {
-                width: 95%;
                 padding: 20px;
             }
             .container {
@@ -297,13 +321,12 @@
                 gap: 10px;
             }
             .task-box {
-                width: 95%;
                 padding: 15px;
             }
             .task-box.expanded {
-                width: 95%;
-                max-height: 85vh;
+                width: clamp(90%, 95vw, 800px);
                 padding: 20px;
+                max-height: 85vh;
             }
             .task-title {
                 font-size: 1.3em;
@@ -324,21 +347,23 @@
                 font-size: 0.9em;
             }
             .quiz-container {
-                width: 95%;
                 padding: 20px;
                 margin: 20px auto;
             }
             .quiz-title {
-                font-size: 1.8em;
+                font-size: 1.6em;
             }
             .quiz-link {
                 padding: 12px 25px;
                 font-size: 1.1em;
             }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 480px) { 
+            .task-title {
+                font-size: 1.2em;
+            }
+
             .header {
-                width: 98%;
                 padding: 15px;
             }
             .container {
@@ -346,11 +371,10 @@
                 gap: 8px;
             }
             .task-box {
-                width: 98%;
                 padding: 10px;
             }
             .task-box.expanded {
-                width: 98%;
+                width: clamp(95%, 98vw, 800px);
                 max-height: 90vh;
                 padding: 15px;
             }
@@ -373,7 +397,6 @@
                 font-size: 0.8em;
             }
             .quiz-container {
-                width: 98%;
                 padding: 15px;
                 margin: 15px auto;
             }
@@ -393,51 +416,39 @@
     <div class="header">
         <h2>LAPORAN PRAKTIKUM</h2>
         <h3>Pemrograman Terstruktur</h3>
-        <p><em>Praktikum 2: variabel</em></p>
+        <p><em>Praktikum 2: Variabel</em></p>
         <img src="img/11.png" alt="Logo Kampus">
-        <p>Nama : <em>Eka Kurniawan Zein</em></p>
-        <p>NIM : <em>24026004</em></p>
+        <p>Nama: <em>Eka Kurniawan Zein</em></p>
+        <p>NIM: <em>24026004</em></p>
         <p><strong>PROGRAM STUDI D3 TEKNOLOGI INFORMASI<br>POLITEKNIK SEMEN INDONESIA GRESIK</strong></p>
         <p><em>01/03/2025</em></p>
     </div>
     <div class="container">
         <div class="task-box">
-            <h2 class="task-title">Coding 1 </h2>
+            <h2 class="task-title">Coding 1: Program BMI Sederhana</h2>
             <button class="view-btn">Lihat</button>
             <div class="task-content">
                 <h3>Coding Program</h3>
                 <div class="code-box">
-                    <pre><code>#include &lt;iostream&gt; 
-#include &lt;string&gt; 
-
+                    <pre><code>#include <iostream> 
+#include <string> 
 using namespace std;
-
 int main() {
-    // Deklarasi variabel sesuai spesifikasi
     int umur;
     double tinggi;
     string nama;
     double indeksBMI;
-
-    // Masukkan Informasi
     cout << "Masukkan nama Anda: ";
     getline(cin, nama);
-
     cout << "Masukkan umur Anda (tahun): ";
     cin >> umur;
-
     cout << "Masukkan tinggi badan Anda (meter): ";
     cin >> tinggi;
-
-    // Hitung BMI (sesuai dengan rumus dalam soal, walaupun tidak sesuai medis)
     indeksBMI = tinggi / umur;
-
-    // Cetak Hasil
     cout << "\nHalo " << nama << "! Informasi Anda:" << endl;
     cout << "Umur: " << umur << " tahun" << endl;
     cout << "Tinggi Badan: " << tinggi << " meter" << endl;
     cout << "BMI: " << indeksBMI << endl;
-
     return 0;
 }</code></pre>
                     <button class="copy-btn"></button>
@@ -469,51 +480,32 @@ int main() {
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
     <div class="container">
         <div class="task-box">
-            <h2 class="task-title">Coding 2</h2>
+            <h2 class="task-title">Coding 2: Program Gaji Bersih</h2>
             <button class="view-btn">Lihat</button>
             <div class="task-content">
                 <h3>Coding Program</h3>
                 <div class="code-box">
                     <pre><code>#include <iostream>
 #include <string>
-
 using namespace std;
-
 int main() {
-    // Deklarasi variabel
     string nama;
     double gajiPokok, tunjangan, pajak, gajiBersih;
-
-    // Input dari pengguna
     cout << "Masukkan nama karyawan: ";
     getline(cin, nama);
-
     cout << "Masukkan gaji pokok: ";
     cin >> gajiPokok;
-
     cout << "Masukkan tunjangan: ";
     cin >> tunjangan;
-
     cout << "Masukkan persentase pajak (%): ";
     cin >> pajak;
-
-    // Konversi pajak dari persen ke desimal
     pajak = pajak / 100.0;
-
-    // Hitung gaji bersih
     gajiBersih = gajiPokok + tunjangan - (pajak * gajiPokok);
-
-    // Tampilkan hasil
     cout << "\nGaji Bersih untuk " << nama << ": " << gajiBersih << endl;
-
     return 0;
-}
-                        </code></pre>
+}</code></pre>
                     <button class="copy-btn"></button>
                 </div>
             </div>
@@ -543,7 +535,7 @@ int main() {
             </div>
         </div>
         <div class="task-box">
-            <h2 class="task-title">Analisa Mengapa Perlu Mempelajari variabel</h2>
+            <h2 class="task-title">Analisa Mengapa Perlu Mempelajari Variabel</h2>
             <button class="view-btn">Lihat</button>
             <div class="task-content">
                 <div class="code-box">
